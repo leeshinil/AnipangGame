@@ -16,6 +16,7 @@ public class GameLogic {
 			int temp = data.getMap(compare_x[0], compare_y[0]);
 			data.setMap(compare_x[0], compare_y[0], data.getMap(compare_x[1], compare_y[1]));
 			data.setMap(compare_x[1], compare_y[1], temp);
+			
 			return true;
 		}
 	}
