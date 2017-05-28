@@ -5,7 +5,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 import com.makers.showmethemoney.controller.GameController;
-import com.makers.showmethemoney.model.GameData;
+import com.makers.showmethemoney.model.game.GameData;
 
 public class GameView extends JPanel implements MouseListener {
 	// 실제게임화면을표시할패널
