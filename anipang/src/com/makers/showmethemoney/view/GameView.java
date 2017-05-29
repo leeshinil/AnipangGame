@@ -98,8 +98,8 @@ public class GameView extends JPanel implements MouseListener {
 		compare_x[1] = y;
 		compare_y[1] = x;
 
-		new MoveThread().start();
-
+//		new MoveThread().start();			//주석처리 하였음
+		swap();								//복사하여 붙여넣기 하였음
 		System.out.println("finish");
 		repaint();
 	}
@@ -115,25 +115,25 @@ public class GameView extends JPanel implements MouseListener {
 		gameController.bomb(compare_x, compare_y);
 	}
 
-	public class MoveThread extends Thread {
-
-		public void run() {
-			int count = 1;
-			type = 1;
-			while (count++ < 10) {
-				try {
-					Thread.sleep(50);
-					moveRightDraw(getGraphics(), compare_x[0], compare_y[0]);
-					size += 10;
-
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-			swap();
-			size = 1;
-		}
-
-	}
+//	public class MoveThread extends Thread {									//임시로 주석처리 하였음
+//
+//		public void run() {
+//			int count = 1;
+//			type = 1;
+//			while (count++ < 10) {
+//				try {
+//					Thread.sleep(50);
+//					moveRightDraw(getGraphics(), compare_x[0], compare_y[0]);
+//					size += 10;
+//
+//				} catch (InterruptedException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+//			}
+//			swap();
+//			size = 1;
+//		}
+//
+//	}
 }
