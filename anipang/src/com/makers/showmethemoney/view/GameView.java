@@ -37,11 +37,11 @@ public class GameView extends JPanel implements MouseListener {
 
 	public void setIcon() {
 		for (int index = 0; index <= 6; index++)
-			icons[index] = toolkit.getImage("money" + (index) + ".png");
+			icons[index] = toolkit.getImage("money__" + (index) + ".png");
 	}
 
 	public void setImage() {
-		images[0] = toolkit.getImage("background.png");
+		images[0] = toolkit.getImage("background1.png");
 	}
 
 	public void drawIcon(Graphics g, int i, int j) {
