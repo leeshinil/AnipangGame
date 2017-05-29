@@ -82,6 +82,23 @@ public class GameLogic {
 
 	}
 	
-	
+	public void downIcon(){
+		int value;
+		for (int i = 7; i > 1; i--) {
+			for (int b = 1; b <= 7; b++) {
+				if (data.getMap(i,b) == 0) {
+					value = i;
+					for (int j = value - 1; j >= 1; j--) {
+						if (data.getMap(j,b) != 0) {
+							data.setMap(value, b, data.getMap(j,b));
+							data.setMap(j, b, 0);
+							break;
+						}
+					}
+				}
+			}
+		}
+	}
+
 
 }
