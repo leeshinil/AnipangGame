@@ -62,8 +62,8 @@ public class GameView extends JPanel implements MouseListener {
 	public void moveRightDraw(Graphics g, int start_x, int start_y) {
 		g.setColor(Color.BLACK);
 		g.fillRect(((start_y - 1) * 80 + 25 + size - 10), (start_x - 1) * 80 + 25, 70, 70);
-		
-		//move
+
+		// move
 		g.drawImage(icons[data.getMap(start_x, start_y)], ((start_y - 1) * 80 + 25 + size), (start_x - 1) * 80 + 25, 70,
 				70, this);
 	}

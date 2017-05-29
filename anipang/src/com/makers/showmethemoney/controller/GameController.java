@@ -23,5 +23,6 @@ public class GameController {
       if (!check_state1 && !check_state2) {
           gameLogic.swapCompare(compare_x, compare_y);
       }
+
    }
 }
