@@ -1,5 +1,6 @@
 package com.makers.showmethemoney.model.game;
 
+import java.util.Random;
 import java.util.Stack;
 
 public class GameLogic {
@@ -81,24 +82,33 @@ public class GameLogic {
 	public void fillMap() {
 
 	}
-	
-	public void downIcon(){
+
+	public void downIcon() {// ¾ÆÀÌÄÜ ºóÄ­¿¡ Ã¤¿ì±â.
+		Random random = new Random();
 		int value;
 		for (int i = 7; i > 1; i--) {
 			for (int b = 1; b <= 7; b++) {
-				if (data.getMap(i,b) == 0) {
+				if (data.getMap(i, b) == 0) {
 					value = i;
 					for (int j = value - 1; j >= 1; j--) {
-						if (data.getMap(j,b) != 0) {
-							data.setMap(value, b, data.getMap(j,b));
+						if (data.getMap(j, b) != 0) {
+							data.setMap(value, b, data.getMap(j, b));
 							data.setMap(j, b, 0);
 							break;
+							
 						}
 					}
 				}
 			}
 		}
-	}
+		for (int x = 1; x <= 7; x++) {
+			for (int y = 1; y <= 7; y++) {
+				if (data.getMap(x, y) == 0) {
+					data.setMap(x, y,random.nextInt(6)+1);
 
+				}
+			}
+		}
+	}
 
 }
