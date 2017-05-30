@@ -6,22 +6,24 @@ import java.util.Stack;
 public class GameLogic {
 	GameData data = null;
 
-	public GameLogic() {
+	public GameLogic() { // 생성자
 		data = GameData.getInstance();
 	}
 
+	// swap 가능한지 검사 후 value값을 swap 한 후 boolean type을 반환하는 메소드
 	public boolean swapCompare(int compare_x[], int compare_y[]) {
+		// x,y 각각의 차를 더한 절대값이 1이 아닌 경우
 		if (Math.abs(compare_x[0] - compare_x[1]) + Math.abs(compare_y[0] - compare_y[1]) != 1) {
-			return false;
+			return false; // swap 불가이므로 false 반환
 		} else {
-			int temp = data.getMap(compare_x[0], compare_y[0]);
+			int temp = data.getMap(compare_x[0], compare_y[0]); // temp에 map의 value 저장
 			data.setMap(compare_x[0], compare_y[0], data.getMap(compare_x[1], compare_y[1]));
-			data.setMap(compare_x[1], compare_y[1], temp);
-			return true;
+			data.setMap(compare_x[1], compare_y[1], temp); // 두 value를 바꿔줌
+			return true; // swap 완료, true 반환
 		}
 	}
 
-	// 방향에 따라 같은 value가 연속적으로 있는지 검사.
+	// 방향에 따라 같은 value가 연속적으로 있는지 검사
 	public int directionCompare(int dir, int cur_x, int cur_y, int value, Stack<Point> stack) {
 		int count = 0; // 방향에 따라 연속적으로 같은 값의 갯수
 
