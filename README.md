@@ -1,1 +1,1 @@
-# Anipang Project ют╢о╢ы.
+# Anipang Project.
