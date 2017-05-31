@@ -104,12 +104,13 @@ public class GameView extends JPanel implements MouseListener {
 		// gameController의 swapCompare에 파라미터로 x,y index에 대한 값을 담은 배열들을 넘겨줌
 		
 		if (!swap_state) { // swap불가능한 위치여서 swap_state가 false이면
-			// error!!
-			System.out.println("error");
+			
 		} else {
 			repaint(); // 다시 그려주는 메소드
 		}
+
 		gameController.bomb(compare_x, compare_y);
+	
 	}
 
 //	public class MoveThread extends Thread {									//임시로 주석처리 하였음

@@ -16,7 +16,8 @@ public class GameLogic {
 		if (Math.abs(compare_x[0] - compare_x[1]) + Math.abs(compare_y[0] - compare_y[1]) != 1) {
 			return false; // swap 불가이므로 false 반환
 		} else {
-			int temp = data.getMap(compare_x[0], compare_y[0]); // temp에 map의 value 저장
+			int temp = data.getMap(compare_x[0], compare_y[0]); // temp에 map의
+																// value 저장
 			data.setMap(compare_x[0], compare_y[0], data.getMap(compare_x[1], compare_y[1]));
 			data.setMap(compare_x[1], compare_y[1], temp); // 두 value를 바꿔줌
 			return true; // swap 완료, true 반환
@@ -36,7 +37,7 @@ public class GameLogic {
 		while (true) {
 			move_x += dx[dir];
 			move_y += dy[dir];
-			if (move_x >= 1 && move_x <= 7 && move_y >= 1 && move_y <= 7 && data.getMap(move_x, move_y) == value) {
+			if (move_x >= 1 && move_x <= 7 && move_y >= 1 && move_y <= 7 && data.getMap(move_x, move_y) == value && data.getMap(move_x, move_y) != 0) {
 				stack.push(new Point(move_x, move_y));
 				count++;
 			} else {
@@ -97,7 +98,7 @@ public class GameLogic {
 							data.setMap(value, b, data.getMap(j, b));
 							data.setMap(j, b, 0);
 							break;
-							
+
 						}
 					}
 				}
@@ -106,7 +107,7 @@ public class GameLogic {
 		for (int x = 1; x <= 7; x++) {
 			for (int y = 1; y <= 7; y++) {
 				if (data.getMap(x, y) == 0) {
-					data.setMap(x, y,random.nextInt(6)+1);
+					data.setMap(x, y, random.nextInt(6) + 1);
 
 				}
 			}
