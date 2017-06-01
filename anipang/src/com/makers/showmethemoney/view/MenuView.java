@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 
 
 public class MenuView {
-	public static void main(String[] args) {
+	public static void main(String[] args) { //임시로  main 써놓음.
 
 		// 프레임 생성 및 설정
 		JFrame frame = new JFrame("Menu");
