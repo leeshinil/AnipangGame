@@ -1,5 +1,3 @@
-
-
 package com.makers.showmethemoney;
 
 import com.makers.showmethemoney.controller.StartController;

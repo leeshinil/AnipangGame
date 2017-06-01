@@ -12,7 +12,7 @@ public class GamePlayPanel extends JPanel implements MouseListener {
 	int compare_x[] = new int[2]; // 비교할 x좌표를 담을 배열
 	int compare_y[] = new int[2]; // 비교할 y좌표를 담을 배열
 	Toolkit toolkit = getToolkit(); // 이미지를 불러올 toolkit 객체
-	Image icons[] = new Image[7]; // 아이콘 이미지를 담을 배열
+	Image icons[] = new Image[9]; // 아이콘 이미지를 담을 배열
 	Image images[] = new Image[3]; // 배경 이미지를 담을 배열
 	GameData data = GameData.getInstance(); // 데이터를 담을 객체
 	GameController gameController = null;
@@ -21,7 +21,6 @@ public class GamePlayPanel extends JPanel implements MouseListener {
 
 	GamePlayPanel() { // 생성자
 		gameController = new GameController(); // GameController 객체 생성
-
 		setIcon(); // 아이콘 이미지 초기화
 		setImage(); // 배경 이미지 초기화
 	}
@@ -36,7 +35,7 @@ public class GamePlayPanel extends JPanel implements MouseListener {
 	}
 
 	public void setIcon() {	// 아이콘 이미지 배열에 이미지 소스를 가져와 초기화 해주는 메소드
-		for (int index = 0; index <= 6; index++)
+		for (int index = 0; index <= 8; index++)
 			icons[index] = toolkit.getImage("money__" + (index) + ".png");
 	}
 
