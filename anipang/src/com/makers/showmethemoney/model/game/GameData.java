@@ -6,7 +6,7 @@ public class GameData {
 	//singleton pattern
 	public static GameData data = null;
 	
-	GameData(){ // 생성자
+	public GameData(){ // 생성자
 		Random random = new Random(); // 랜덤 객체 생성
 		int arr[][] = new int[8][8]; // map에 랜덤으로 초기화 할 arr배열을 생성
 		for (int i = 1; i <= 7; i++) {

@@ -1,8 +1,13 @@
-package com.makers.showmethemoney.view;
+package com.makers.showmethemoney.view.layout;
 
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
+import javax.swing.JPanel;
 
 import com.makers.showmethemoney.controller.GameController;
 import com.makers.showmethemoney.model.game.GameData;
@@ -19,7 +24,7 @@ public class GamePlayPanel extends JPanel implements MouseListener {
 	int type = 0; // thread
 	int size = 1; // thread
 
-	GamePlayPanel() { // 생성자
+	public GamePlayPanel() { // 생성자
 		gameController = new GameController(); // GameController 객체 생성
 		setIcon(); // 아이콘 이미지 초기화
 		setImage(); // 배경 이미지 초기화
@@ -63,8 +68,7 @@ public class GamePlayPanel extends JPanel implements MouseListener {
 		g.fillRect(((start_y - 1) * 80 + 25 + size - 10), (start_x - 1) * 80 + 25, 70, 70);
 
 		// move
-		g.drawImage(icons[data.getMap(start_x, start_y)], ((start_y - 1) * 80 + 25 + size), (start_x - 1) * 80 + 25, 70,
-				70, this);
+		g.drawImage(icons[data.getMap(start_x, start_y)], ((start_y - 1) * 80 + 25 + size), (start_x - 1) * 80 + 25, 70, 70, this);
 	}
 
 	public void paint(Graphics g) { // 아이콘들과 배경 이미지를 그려주는 메소드
@@ -92,25 +96,18 @@ public class GamePlayPanel extends JPanel implements MouseListener {
 		compare_x[1] = y;
 		compare_y[1] = x;
 
-//		new MoveThread().start();			// thread 효과 없애기 위해서 잠시 주석처리 하였음
-		swap();								// MoveThread 메소드 안의 내용을 잠시 복사하여 붙여넣기 하였음
-//		System.out.println("finish");
+//		new MoveThread().start();		// thread 효과 없애기 위해서 잠시 주석처리 하였음
+		gameController.doAction(compare_x, compare_y);
 		repaint();  // 다시 그려주는 메소드
 	}
 
-	public void swap() { // Pressed, Released의 value를 swap하는 메소드
-		boolean swap_state = gameController.swapCompare(compare_x, compare_y);
-		// gameController의 swapCompare에 파라미터로 x,y index에 대한 값을 담은 배열들을 넘겨줌
-		
-		if (!swap_state) { // swap불가능한 위치여서 swap_state가 false이면
-			
-		} else {
-			repaint(); // 다시 그려주는 메소드
-		}
-
-		gameController.bomb(compare_x, compare_y);
-	
-	}
+//	public void swapCheckAndDo() { // Pressed, Released의 value를 swap하는 메소드
+//		boolean swap_state = gameController.swapCompare(compare_x, compare_y);
+//		// gameController의 swapCompare에 파라미터로 x,y index에 대한 값을 담은 배열들을 넘겨줌
+//
+//		if (!swap_state); // swap 불가능한 위치여서 false이면
+//		else repaint(); // 다시 그려주는 메소드
+//	}
 
 //	public class MoveThread extends Thread {									//임시로 주석처리 하였음
 //

@@ -1,4 +1,4 @@
-package com.makers.showmethemoney.view;
+package com.makers.showmethemoney.view.layout;
 
 import java.awt.BorderLayout;
 import java.awt.Button;
