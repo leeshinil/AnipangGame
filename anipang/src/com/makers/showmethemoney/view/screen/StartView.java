@@ -1,21 +1,26 @@
 package com.makers.showmethemoney.view.screen;
 
+import java.applet.Applet;
+import java.applet.AudioClip;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.net.MalformedURLException;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 import com.makers.showmethemoney.view.layout.Button;
 import com.makers.showmethemoney.view.layout.LayoutPanel;
 
 public class StartView {
-	JLabel label = null;
 
 	public StartView() {
-		
+	
 		// Make Frame
 		JFrame frame = new JFrame ("Show Me The Money");
 		frame.setLocation(500, 20);
@@ -27,11 +32,10 @@ public class StartView {
 		layPanel.setLayout(null);
 		layPanel.setBounds(0, 0, 1200, 950);
 
-		label = new JLabel("START");
+		JLabel label = new JLabel("START");
 		
 		// START Button inner Class Overriding
 		Button startButton = new Button(label, 450, 700, 300, 100) {
-			@Override
 			public void actionPerformed(ActionEvent e) {
 				layPanel.remove(this);
 				contentPane.remove(layPanel);
@@ -45,11 +49,10 @@ public class StartView {
 			public void mouseExited(MouseEvent e) {
 				label.setText("START");
 			}
-			
 		};
 		
 		layPanel.add(startButton);
-		contentPane.add(layPanel);
+		contentPane.add(layPanel);		
 	
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.pack();

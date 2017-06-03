@@ -32,7 +32,7 @@ public class MenuView {
 		mode3 = new JLabel("Mode 3");
 
 		// Button MouseEventø° ¥Î«— inner Class Overriding
-		Button ModeButton1 = new Button(mode1, 600, 300, 300, 100) {
+		Button ModeButton1 = new Button(mode1, 700, 300, 300, 100) {
 			public void mouseEntered(MouseEvent e) {
 				mode1.setText("Mode 1!!");	
 			}
@@ -40,7 +40,7 @@ public class MenuView {
 				mode1.setText("Mode 1");
 			}
 		};
-		Button ModeButton2 = new Button(mode2, 600, 450, 300, 100) {
+		Button ModeButton2 = new Button(mode2, 700, 450, 300, 100) {
 			public void mouseEntered(MouseEvent e) {
 				mode2.setText("Mode 2!!");
 			}
@@ -48,7 +48,7 @@ public class MenuView {
 				mode2.setText("Mode 2");
 			}
 		};
-		Button ModeButton3 = new Button(mode3, 600, 600, 300, 100) {
+		Button ModeButton3 = new Button(mode3, 700, 600, 300, 100) {
 			public void mouseEntered(MouseEvent e) {
 				mode3.setText("Mode 3!!");
 			}

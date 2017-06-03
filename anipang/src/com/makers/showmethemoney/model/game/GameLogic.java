@@ -144,9 +144,13 @@ public class GameLogic {
 	}
 	
 	public void bombItem(int x, int y) {
+		
 		for(int i = 1; i <= 7; i++) {
-			data.setMap(x, i, 0);
-			data.setMap(i, y, 0);
+			if(data.getMap(x, i) != 7 && data.getMap(x, i) != 8) {
+				data.setMap(x, i, 0);
+				data.setMap(i, y, 0);
+			}
 		}
+		data.setMap(x, y, 0);
 	}
 }

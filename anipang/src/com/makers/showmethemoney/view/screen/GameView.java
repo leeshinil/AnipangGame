@@ -5,14 +5,25 @@ import java.awt.Dimension;
 
 import javax.swing.JFrame;
 
+import com.makers.showmethemoney.model.game.BackgroundMusicSound;
 import com.makers.showmethemoney.view.layout.GamePlayPanel;
 import com.makers.showmethemoney.view.layout.GameScorePanel;
 import com.makers.showmethemoney.view.layout.GameTimePanel;
 import com.makers.showmethemoney.view.layout.LayoutPanel;
 
+import test____.BackgroundMusic;
+
 public class GameView {
 	
 	public GameView(JFrame frame) {
+	
+		// Sound
+		BackgroundMusicSound.stop();
+		BackgroundMusicSound.text.setText("C:\\Users\\User\\workspace\\test2\\고전게임스러운음악.wav");
+		BackgroundMusicSound.loop();
+//		BackgroundMusic music = new BackgroundMusic();
+//		music.BackgroundMusicStop(music.file);
+//		music.BackgroundMusicReStart("C:\\Users\\User\\workspace\\test2\\고전게임스러운음악.wav");
 		
 		// Set Container
 		Container contentPane = frame.getContentPane();
