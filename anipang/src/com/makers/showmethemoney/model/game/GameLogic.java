@@ -8,6 +8,7 @@ public class GameLogic {
 
 	public GameLogic() { // 생성자
 		data = GameData.getInstance();
+		data.setInitScore();
 	}
 
 	// swap 가능 여부 boolean type 반환 메소드
@@ -47,52 +48,60 @@ public class GameLogic {
 	}
 
 	public boolean bomb(int compare_x, int compare_y) { // bomb method
-	      int value = data.getMap(compare_x, compare_y);
-	      Stack<Point> stack = new Stack<Point>();
-	      int dir[] = { 0, 2 };
-	      boolean cur_state = false;
-	      boolean bitCoinItem_state = false;
-	      boolean bombItem_state = false;
-	      
-	      for (int i = 0; i < 2; i++) {
-	         int total_count = directionCompare(dir[i], compare_x, compare_y, value, stack)
-	               + directionCompare(dir[i] + 1, compare_x, compare_y, value, stack);
+        int value = data.getMap(compare_x, compare_y);
+        Stack<Point> stack = new Stack<Point>();
+        int dir[] = { 0, 2 };
+        boolean cur_state = false;
+        boolean bitCoinItem_state = false;
+        boolean bombItem_state = false;
+        
+        for (int i = 0; i < 2; i++) {
+           int total_count = directionCompare(dir[i], compare_x, compare_y, value, stack)
+                 + directionCompare(dir[i] + 1, compare_x, compare_y, value, stack);
 
-	         if (total_count >= 2) {
-	            while (!stack.isEmpty()) {
-	               Point p = stack.pop();
-	               int x = p.x;
-	               int y = p.y;
-	               data.setMap(x, y, 0);
-	            }
-	            if(total_count >=4)
-	               bombItem_state = true;
-	            else if(total_count >= 3)
-	               bitCoinItem_state = true;
-	            cur_state = true;
-	         }
-	         stack.clear();
-	      }
-	      
-	      if (cur_state) {
-	         if(bitCoinItem_state)
-	            data.setMap(compare_x, compare_y, 7);
-	         else if(bombItem_state)
-	            data.setMap(compare_x, compare_y, 8);
-	         else
-	            data.setMap(compare_x, compare_y, 0);
-	         return true;
-	      } else
-	         return false;
+           if (total_count >= 2) {
+              while (!stack.isEmpty()) {
+                 Point p = stack.pop();
+                 int x = p.x;
+                 int y = p.y;
+                 data.setMap(x, y, 0);
+                
+              }
+              System.out.println("total : " + total_count);
+            
+              if(total_count >= 2) // increase scores
+            	  data.setScore(data.getMap(compare_x, compare_y), total_count+1);
+            
+              if(total_count >=4)
+                 bombItem_state = true;
+              else if(total_count >= 3)
+                 bitCoinItem_state = true;
+              cur_state = true;
+           }
+           stack.clear();
+        }
+        
+        if (cur_state) {
+           if(bitCoinItem_state)
+              data.setMap(compare_x, compare_y, 7);
+           else if(bombItem_state)
+              data.setMap(compare_x, compare_y, 8);
+           else {               
+              data.setMap(compare_x, compare_y, 0);
+           }
+           return true;
+        } else
+           return false;
 
-		// 1-> new stack
-		// 2-> north + south compare
-		// ---> int total_count = dircectionCompare(0) + directionCompare(1);
-		// 3-> if total_count >= 3 stack pop bomb
-		// 이하 동문
-		// 4-> east + west compare
-		// 5- > stack pop bomb
-	}
+     // 1-> new stack
+     // 2-> north + south compare
+     // ---> int total_count = dircectionCompare(0) + directionCompare(1);
+     // 3-> if total_count >= 3 stack pop bomb
+     // 이하 동문
+     // 4-> east + west compare
+     // 5- > stack pop bomb
+  }
+
 
 	public void downIcon() { // 아이콘 빈칸에 채우기.
 		Random random = new Random();
@@ -134,23 +143,32 @@ public class GameLogic {
 	}	
 	
 	public void bitcoinItem(int x, int y) {
-		int value = new Random().nextInt(6)+1;
-		
-		for(int i = 1; i <= 7; i++)
-			for(int j = 1; j <= 7; j++)
-				if(data.getMap(i, j) == value)
-					data.setMap(i,j,0);
-		data.setMap(x, y, 0);
-	}
-	
-	public void bombItem(int x, int y) {
-		
-		for(int i = 1; i <= 7; i++) {
-			if(data.getMap(x, i) != 7 && data.getMap(x, i) != 8) {
-				data.setMap(x, i, 0);
-				data.setMap(i, y, 0);
-			}
-		}
-		data.setMap(x, y, 0);
-	}
+	      int value = new Random().nextInt(6)+1;
+	      int count = 0;
+	      
+	      for(int i = 1; i <= 7; i++)
+	         for(int j = 1; j <= 7; j++)
+	            if(data.getMap(i, j) == value) {
+	               data.setMap(i,j,0);
+	               count++;
+	            }
+	      
+	      data.setMap(x, y, 0);
+	      data.setScore(value, count+1);
+	      data.setScore(0, 1);
+	   }
+	   
+	   public void bombItem(int x, int y) {
+	      for(int i = 1; i <= 7; i++) {
+	         if(data.getMap(x, i) != 7 && data.getMap(x, i) != 8 && data.getMap(i, y) != 7 && data.getMap(i, y) != 8) {
+	            data.setScore(data.getMap(x, i), 1);   
+	            data.setMap(x, i, 0);
+	            data.setScore(data.getMap(i, y), 1);
+	            data.setMap(i, y, 0);
+	         }
+	      }
+	      
+	      data.setMap(x, y, 0);
+	      data.setScore(0, 1);
+	   }
 }

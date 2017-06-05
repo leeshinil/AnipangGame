@@ -1,59 +1,42 @@
 package com.makers.showmethemoney.view.screen;
 
-import java.applet.Applet;
-import java.applet.AudioClip;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
-import java.awt.event.MouseEvent;
-import java.io.File;
-import java.net.MalformedURLException;
 
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 
-import com.makers.showmethemoney.view.layout.Button;
-import com.makers.showmethemoney.view.layout.LayoutPanel;
+import com.makers.showmethemoney.view.layout.Buttons;
+import com.makers.showmethemoney.view.layout.StartPanel;
 
 public class StartView {
 
 	public StartView() {
-	
+
 		// Make Frame
 		JFrame frame = new JFrame ("Show Me The Money");
 		frame.setLocation(500, 20);
 		frame.setPreferredSize(new Dimension(1215, 995));
 		Container contentPane = frame.getContentPane();
-		
-		// Layout 담당 Panel
-		LayoutPanel layPanel = new LayoutPanel("startBackground1.png");
-		layPanel.setLayout(null);
-		layPanel.setBounds(0, 0, 1200, 950);
+		contentPane.setLayout(null);
 
-		JLabel label = new JLabel("START");
-		
-		// START Button inner Class Overriding
-		Button startButton = new Button(label, 450, 700, 300, 100) {
+		// draw 담당 Panel
+		StartPanel drawPanel = new StartPanel();
+		drawPanel.setLayout(null);
+		drawPanel.setBounds(0, 0, 1200, 950);
+
+		// START Button actionlistener inner Class Overriding
+		Buttons startButton = new Buttons(450, 700) {
 			public void actionPerformed(ActionEvent e) {
-				layPanel.remove(this);
-				contentPane.remove(layPanel);
-				new MenuView(frame);
-			}
-			
-			public void mouseEntered(MouseEvent e) {
-				label.setText("START!!");
-			}
-
-			public void mouseExited(MouseEvent e) {
-				label.setText("START");
+				contentPane.remove(drawPanel);
+				contentPane.remove(this);
+				new LoadingView(frame, 0, "startBackground2.png");
 			}
 		};
-		
-		layPanel.add(startButton);
-		contentPane.add(layPanel);		
-	
+
+		contentPane.add(drawPanel);
+		contentPane.add(startButton);
+
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.pack();
 		frame.setVisible(true);

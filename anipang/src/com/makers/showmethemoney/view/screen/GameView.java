@@ -9,46 +9,37 @@ import com.makers.showmethemoney.model.game.BackgroundMusicSound;
 import com.makers.showmethemoney.view.layout.GamePlayPanel;
 import com.makers.showmethemoney.view.layout.GameScorePanel;
 import com.makers.showmethemoney.view.layout.GameTimePanel;
-import com.makers.showmethemoney.view.layout.LayoutPanel;
+import com.makers.showmethemoney.view.layout.StartPanel;
 
 import test____.BackgroundMusic;
 
 public class GameView {
+//	public GameView(JFrame frame) {
+	public static void main(String[] args) {
 	
-	public GameView(JFrame frame) {
-	
+		JFrame frame = new JFrame("reset");
+		frame.setLocation(500, 20);
+		frame.setPreferredSize(new Dimension(1215, 995));
+		
 		// Sound
-		BackgroundMusicSound.stop();
-		BackgroundMusicSound.text.setText("C:\\Users\\User\\workspace\\test2\\고전게임스러운음악.wav");
-		BackgroundMusicSound.loop();
+//		BackgroundMusicSound.stop();
+//		BackgroundMusicSound.name.setText("C:\\Users\\User\\Desktop\\Anipang\\anipang\\고전게임스러운음악.wav");
+//		BackgroundMusicSound.loop();
+		
 //		BackgroundMusic music = new BackgroundMusic();
 //		music.BackgroundMusicStop(music.file);
 //		music.BackgroundMusicReStart("C:\\Users\\User\\workspace\\test2\\고전게임스러운음악.wav");
 		
 		// Set Container
-		Container contentPane = frame.getContentPane();
-		
-		// Layout 담당 Panel
-		LayoutPanel layPanel = new LayoutPanel("gameBackground1.png");
-		layPanel.setLayout(null);
-		layPanel.setPreferredSize(new Dimension(1200, 950));
+		Container contentPane = frame.getContentPane(); 
+		contentPane.setLayout(null);
 		
 		// make and set GamePlayPanel
-		GamePlayPanel imagePanel = new GamePlayPanel();
-		imagePanel.setLayout(null);
-		imagePanel.setBounds(150, 200, 605, 605); // 위치 크기조절
-		imagePanel.addMouseListener(imagePanel); // imagePanel에 대한 add Listener
-		layPanel.add(imagePanel); // LayoutPanel에 add imagePanel
+		GamePlayPanel playPanel = new GamePlayPanel();
+		playPanel.setBounds(0, 0, 1200, 950); // 위치 크기조절
+		playPanel.addMouseListener(playPanel); // imagePanel에 대한 add Listener
 		
-		// make and set GameTimePanel
-		GameTimePanel timePanel = new GameTimePanel();
-		layPanel.add(timePanel); // LayoutPanel에 add timePanel
-		
-		// make and set GameScorePanel
-		GameScorePanel scorePanel = new GameScorePanel();
-		layPanel.add(scorePanel);// LayoutPanel에 add scorePanel
-		
-		contentPane.add(layPanel);	// contentPane에 add LayoutPanel
+		contentPane.add(playPanel); // contentPanel에 add playPanel
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.pack();

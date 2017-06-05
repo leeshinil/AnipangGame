@@ -9,30 +9,30 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 public class BackgroundMusicSound{
-
-	public static JTextField text = new JTextField("C:\\Users\\User\\workspace\\test2\\경쾌하고활기찬음악.wav");
+	// 경로 : C:\\Users\\User\\Desktop\\Anipang\\anipang\\
+	public static JTextField name = new JTextField("C:\\Users\\User\\Desktop\\Anipang\\anipang\\경쾌하고활기찬음악.wav");
 	public static File file = null;
 	static AudioClip audioClip = null;
 
 	public static void loop() {
 		try {
-			file = new File(text.getText());
+			file = new File(name.getText());
 			audioClip = Applet.newAudioClip(file.toURL());
 			audioClip.loop();
 			System.out.println("무한 재생!");
 		} catch (MalformedURLException mue) {
-			JOptionPane.showMessageDialog(text, "Wrong file name.", "Error Message", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(name, "Wrong file name.", "Error Message", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 
 	public static void play() {
 		try {
-			file = new File(text.getText());
+			file = new File(name.getText());
 			audioClip = Applet.newAudioClip(file.toURL());
-			audioClip.loop();
+			audioClip.play();
 			System.out.println("무한 재생!");
 		} catch (MalformedURLException mue) {
-			JOptionPane.showMessageDialog(text, "Wrong file name.", "Error Message", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(name, "Wrong file name.", "Error Message", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 
