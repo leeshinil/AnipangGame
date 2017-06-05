@@ -1,16 +1,18 @@
-
 package com.makers.showmethemoney.controller;
 
+import com.makers.showmethemoney.model.game.BombSound;
 import com.makers.showmethemoney.model.game.GameData;
 import com.makers.showmethemoney.model.game.GameLogic;
 
 public class GameController {
 	GameData data = null;
 	GameLogic gameLogic = null;
-
+	BombSound bombsound = null;
+	
 	public GameController() { // 생성자
 		data = GameData.getInstance(); // GameData를 담을 객체
 		gameLogic = new GameLogic(); // GameLogic 객체
+		bombsound = new BombSound();
 	}
 
 	// Logic의 swapCompare메소드를 호출해주는 메소드
@@ -51,7 +53,10 @@ public class GameController {
 					gameLogic.swap(compare_x, compare_y);
 					return ;
 				}
-			}
+				else
+					bombsound.Start();
+				}
+			
 			else // swap 불가능시 return
 				return ;
 		}
@@ -64,6 +69,8 @@ public class GameController {
 			// -> 메소드 호출 후 3개이상 중복시 다시 bomb 호출
 			// -> 반복문으로 계속 체크 
 			checkAll = bombAll(); //모든 블록 체크
+			if(checkAll)
+				bombsound.Start();
 //			System.out.println(checkAll);
 		} while (checkAll);
 		
