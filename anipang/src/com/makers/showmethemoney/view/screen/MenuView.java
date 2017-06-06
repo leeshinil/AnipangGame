@@ -43,14 +43,13 @@ public class MenuView {
 		};
 		ActionListener action2 = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				contentPane.remove(layPanel);
 				new LoadingView(2, "gamePanelBackground.png");
+				frame.dispose();
 			}
 		};
 		ActionListener action3 = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				contentPane.remove(layPanel);
-				new LoadingView(3, "gamePanelBackground.png");
+				frame.dispose();
 			}
 		};
 		

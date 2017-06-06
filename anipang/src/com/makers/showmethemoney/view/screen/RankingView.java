@@ -1,15 +1,19 @@
 package com.makers.showmethemoney.view.screen;
 
-import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 
+import com.makers.showmethemoney.view.layout.Buttons;
 import com.makers.showmethemoney.view.layout.RankingPanel;
 
 public class RankingView {
-	public static void main(String[] args) {
+
+	/********** 생성자 **********/
+	public RankingView() {
 
 		// Make Frame
 		JFrame frame = new JFrame("RANK");
@@ -24,10 +28,22 @@ public class RankingView {
 		drawPanel.setLayout(null);
 		drawPanel.setBounds(0, 0, 1200, 950);
 		contentPane.add(drawPanel);
-
-//		g.fillRect(450, 770, 300, 100);
-//		g.fillRect(460, 780, 280, 80);
 		
+		Buttons menuButton = new Buttons(450, 770);
+		
+		// Button Action에 대한 inner Class Overriding
+		ActionListener action = new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new LoadingView(0, "menuPanelBackground.png");
+				frame.dispose();
+			}
+		};
+		
+		// Button에 대한 add listener
+		menuButton.addActionListener(action);
+		
+		contentPane.add(menuButton);
+
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.pack();
 		frame.setVisible(true);

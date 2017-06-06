@@ -55,7 +55,7 @@ public class LoadingPanel extends JPanel {
 	public class LoadingThread extends Thread {
 		
 		public void run() {
-			int size = 10;
+			int size = 0;
 			while (threadData.getCount() < 255) {
 				try {		
 					Thread.sleep(10);
