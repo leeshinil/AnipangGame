@@ -1,25 +1,24 @@
 package com.makers.showmethemoney.view.screen;
 
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
 
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 
 import com.makers.showmethemoney.view.layout.Buttons;
 import com.makers.showmethemoney.view.layout.MenuPanel;
-import com.makers.showmethemoney.view.layout.StartPanel;
 
 public class MenuView {
-	JLabel mode1 = null;
-	JLabel mode2 = null;
-	JLabel mode3 = null;
 	
-	public MenuView(JFrame frame) {
+	public MenuView() {
 
+		// Make Frame
+		JFrame frame = new JFrame("Show Me The Money");
+		frame.setLocation(500, 20);
+		frame.setPreferredSize(new Dimension(1215, 995));
+		
 		// Set Container
 		Container contentPane = frame.getContentPane();
 		
@@ -28,57 +27,28 @@ public class MenuView {
 		layPanel.setLayout(null);
 		layPanel.setBounds(0, 0, 1200, 950);	
 		
-		// Button에 print될 Label
-//		mode1 = new JLabel("Mode 1");
-//		mode2 = new JLabel("Mode 2");
-//		mode3 = new JLabel("Mode 3");
-
 		// Button MouseEvent에 대한 inner Class Overriding
 		Buttons ModeButton1 = new Buttons(700, 300);
-//		{
-//			public void mouseEntered(MouseEvent e) {
-//				mode1.setText("Mode 1!!");	
-//			}
-//			public void mouseExited(MouseEvent e) {
-//				mode1.setText("Mode 1");
-//			}
-//		};
 		Buttons ModeButton2 = new Buttons(700, 450);
-//		{
-//			public void mouseEntered(MouseEvent e) {
-//				mode2.setText("Mode 2!!");
-//			}
-//			public void mouseExited(MouseEvent e) {
-//				mode2.setText("Mode 2");
-//			}
-//		};
 		Buttons ModeButton3 = new Buttons(700, 600);
-//		{
-//			public void mouseEntered(MouseEvent e) {
-//				mode3.setText("Mode 3!!");
-//			}
-//			public void mouseExited(MouseEvent e) {
-//				mode3.setText("Mode 3");
-//			}
-//		};
 		
 		// Button Action에 대한 inner Class Overriding
 		ActionListener action1 = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				contentPane.remove(layPanel);
-				new LoadingView(frame, 1, "gameBackground1.png");
+				new LoadingView(1, "gamePanelBackground.png");
 			}
 		};
 		ActionListener action2 = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				contentPane.remove(layPanel);
-				new LoadingView(frame, 2, "gameBackground1.png");
+				new LoadingView(2, "gamePanelBackground.png");
 			}
 		};
 		ActionListener action3 = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				contentPane.remove(layPanel);
-				new LoadingView(frame, 3, "gameBackground1.png");
+				new LoadingView(3, "gamePanelBackground.png");
 			}
 		};
 		
