@@ -2,18 +2,24 @@ package com.makers.showmethemoney.view.layout;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Toolkit;
 
 import javax.swing.JPanel;
 
 public class RankingPanel extends JPanel {
+	Toolkit toolkit = getToolkit();
+	Image rankPanelbackground = toolkit.getImage("gamePanelBackground.png");
+	Image buttonImage = toolkit.getImage("menuButton.png");
 	
 	public RankingPanel() {
 		
 	}
 	
 	public void drawRankingPanel(Graphics g) {
-		g.setColor(Color.LIGHT_GRAY);
-		g.fillRect(0, 0, 1200, 950);
+//		g.setColor(Color.LIGHT_GRAY);
+//		g.fillRect(0, 0, 1200, 950);
+		g.drawImage(rankPanelbackground, 0, 0, 1200, 950, this);
 	}
 	
 	public void drawRankingBankground(Graphics g) {
@@ -34,12 +40,9 @@ public class RankingPanel extends JPanel {
 	}
 	
 	public void drawButton(Graphics g) {
-		g.setColor(Color.black);
-		g.fillRect(450, 770, 300, 100);
-		g.setColor(Color.WHITE);
-		g.fillRect(460, 780, 280, 80);
+		g.drawImage(buttonImage, 450, 770, 300, 100, this);
 	}
-		
+
 	public void paint(Graphics g) {
 		drawRankingPanel(g);
 		drawRankingBankground(g);

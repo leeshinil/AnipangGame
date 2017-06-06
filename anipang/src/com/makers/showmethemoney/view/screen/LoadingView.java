@@ -30,23 +30,30 @@ public class LoadingView {
 
 		MouseListener listener = new MouseListener() {
 			public void mouseReleased(MouseEvent e) { }
+
 			public void mousePressed(MouseEvent e) {
-				switch(_checkView) {
-				case 0 : {
+				switch (_checkView) {
+				case 0: {
 					new MenuView();
-					threadData.setCount(260);
+					threadData.setCount(270);
 					break;
 				}
-				case 1 : {
+				case 1: {
 					new GameView();
-					threadData.setCount(260);
-					break; // mode 1
+					threadData.setCount(270);
+					break;
 				}
-				case 2 : new GameView(); break; // mode 2
-				case 3 : new GameView(); break; // mode 3
+				case 2: {
+					new RankingView();
+					threadData.setCount(270);
+					break;
+				}
+				case 3:
+					break;
 				}
 				frame.dispose();
 			}
+			
 			public void mouseExited(MouseEvent e) { }
 			public void mouseEntered(MouseEvent e) { }
 			public void mouseClicked(MouseEvent e) { }

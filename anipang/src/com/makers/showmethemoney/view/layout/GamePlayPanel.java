@@ -22,8 +22,8 @@ public class GamePlayPanel extends JPanel implements MouseListener {
 	int compare_y[] = new int[2]; // 비교할 y좌표를 담을 배열
 	Toolkit toolkit = getToolkit(); // 이미지를 불러올 toolkit 객체
 	Image icons[] = new Image[9]; // 아이콘 이미지를 담을 배열
-	Image gamePanelImage; // 게임 패널 이미지를 담을 배열
-	Image gameBackgroundImage; // 게임 아이콘 출력 배경 이미지
+	Image gamePanelImage = null; // 게임 패널 이미지를 담을 배열
+	Image gameBackgroundImage = null; // 게임 아이콘 출력 배경 이미지
 	GameData data = GameData.getInstance(); // 데이터를 담을 객체
 	GameController gameController = null;
 	
@@ -67,8 +67,9 @@ public class GamePlayPanel extends JPanel implements MouseListener {
 	
 	/********** 게임 패널 배경 이미지를 그려주는 메소드 **********/
 	public void drawGamePanelImage(Graphics g) {
-		g.setColor(Color.LIGHT_GRAY);
-		g.fillRect(0, 0, 1200, 950);
+		g.drawImage(gamePanelImage, 0, 0, 1200, 950, this);
+//		g.setColor(Color.LIGHT_GRAY);
+//		g.fillRect(0, 0, 1200, 950);
 	}
 
 	/********** 게임 아이콘 출력 배경 이미지를 그려주는 메소드 **********/
@@ -109,10 +110,12 @@ public class GamePlayPanel extends JPanel implements MouseListener {
 			g.fillRect(190, 90, 825, 90);
 			g.setColor(Color.GREEN);
 			g.fillRect(210, 110, 785, 50);
-			System.out.println("퍼스트타임 드로우");
 		}
-		System.out.println("타임 드로우");
 		g.clearRect(995-(600-data.getTime())*13/10, 110, (600-data.getTime())*13/10, 50);
+		g.setColor(Color.GREEN);
+		g.fillRect(975-(600-data.getTime())*13/10, 110, 20, 50);
+		g.setColor(Color.black);
+		g.drawString(Integer.toString(data.getTime()/10), 975-(600-data.getTime())*13/10, 140);
 	}
 	
 	/********** 게임판에 아이콘을 그려주는 메소드 190, 200 **********/
@@ -178,9 +181,8 @@ public class GamePlayPanel extends JPanel implements MouseListener {
 	            try {
 	               System.out.println(data.getTime());
 	               drawTime(getGraphics());
-	               Thread.sleep(10);
+	               Thread.sleep(100);
 	               data.setTime(1);
-
 	            } catch (InterruptedException e) {
 	               // TODO Auto-generated catch block
 	               e.printStackTrace();
