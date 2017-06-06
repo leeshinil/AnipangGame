@@ -8,6 +8,10 @@ public class Main {
 	public static void main(String[] args) {
 		new StartController().gameStart();
 		new BackgroundMusicSound();
+
 		/****/
+
+		//asdf
+
 	}
 }
