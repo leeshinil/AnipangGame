@@ -6,11 +6,13 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.JFrame;
 
+import com.makers.showmethemoney.model.game.ThreadData;
 import com.makers.showmethemoney.view.layout.Buttons;
 import com.makers.showmethemoney.view.layout.StartPanel;
 
 public class StartView {
 
+	/********** »ý¼ºÀÚ **********/
 	public StartView() {
 
 		// Make Frame

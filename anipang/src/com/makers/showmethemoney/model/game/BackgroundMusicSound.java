@@ -14,6 +14,7 @@ public class BackgroundMusicSound{
 	public static File file = null;
 	static AudioClip audioClip = null;
 
+	/********** 음악을 무한반복 재생 **********/
 	public static void loop() {
 		try {
 			file = new File(name.getText());

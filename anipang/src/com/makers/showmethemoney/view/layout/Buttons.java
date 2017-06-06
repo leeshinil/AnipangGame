@@ -22,6 +22,7 @@ public class Buttons extends JButton implements ActionListener, MouseListener {
 	File file = null;
 	AudioClip audioClip = null;
 	
+	/********** »ý¼ºÀÚ **********/
 	public Buttons(int x, int y) {
 		this.setBounds(x, y, 300, 100);
 		this.setContentAreaFilled(false);

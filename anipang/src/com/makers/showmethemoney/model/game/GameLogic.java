@@ -6,12 +6,13 @@ import java.util.Stack;
 public class GameLogic {
 	GameData data = null;
 
+	/********** 생성자 **********/
 	public GameLogic() { // 생성자
 		data = GameData.getInstance();
 		data.setInitScore();
 	}
 
-	// swap 가능 여부 boolean type 반환 메소드
+	/********** swap 가능 여부 boolean type 반환 메소드 **********/
 	public boolean isSwapPossible(int compare_x[], int compare_y[]) {
 		// x,y 각 차를 더한 절대 값 != 1
 		if (Math.abs(compare_x[0] - compare_x[1]) + Math.abs(compare_y[0] - compare_y[1]) != 1)
@@ -19,14 +20,14 @@ public class GameLogic {
 		return true; // swap 가능
 	}
 	
-	// swap 해주는 메소드
+	/********** swap 해주는 메소드 **********/
 	public void swap(int compare_x[], int compare_y[]) {
 		int temp = data.getMap(compare_x[0], compare_y[0]); // temp에 map의 value 저장
 		data.setMap(compare_x[0], compare_y[0], data.getMap(compare_x[1], compare_y[1]));
 		data.setMap(compare_x[1], compare_y[1], temp); // 두 value를 바꿔줌
 	}
 
-	// 방향에 따라 연속 value 중복 체크
+	/********** 방향에 따라 연속 value 중복 체크 **********/
 	public int directionCompare(int dir, int cur_x, int cur_y, int value, Stack<Point> stack) {
 		int count = 0; // 연속 중복 개수
 		// 0->south, 1->north, 2->east, 3->west
@@ -47,7 +48,8 @@ public class GameLogic {
 		}
 	}
 
-	public boolean bomb(int compare_x, int compare_y) { // bomb method
+	/********** bomb method **********/
+	public boolean bomb(int compare_x, int compare_y) {
         int value = data.getMap(compare_x, compare_y);
         Stack<Point> stack = new Stack<Point>();
         int dir[] = { 0, 2 };
@@ -102,15 +104,13 @@ public class GameLogic {
      // 5- > stack pop bomb
   }
 
-
-	public void downIcon() { // 아이콘 빈칸에 채우기.
+	/********** 아이콘 빈칸에 채우기 **********/
+	public void downIcon() {
 		Random random = new Random();
-		int value;
 		
 		for (int i = 7; i > 1; i--) {
 			for (int j = 1; j <= 7; j++) {
 				if (data.getMap(i, j) == 0) {
-//					value = i;
 					for (int b = i - 1; b >= 1; b--) {
 						if (data.getMap(b, j) != 0) {
 							data.setMap(i, j, data.getMap(b, j));
@@ -130,18 +130,21 @@ public class GameLogic {
 		}
 	}
 	
+	/********** item인지 체크하는 메소드 **********/
 	public boolean checkIsItem(int x, int y) {
 		if(data.getMap(x, y) == 7 || data.getMap(x, y) == 8)
 			return true;
 		return false;
 	}
 	
+	/********** 어떤 메소드인지 확인하는 메소드 **********/
 	public boolean whatItem(int x, int y) {
 		if(data.getMap(x, y) == 7)
 			return true; // bitcoin
 		return false; // bomb
 	}	
 	
+	/********** bitcointItem 수행하는 메소드 **********/
 	public void bitcoinItem(int x, int y) {
 	      int value = new Random().nextInt(6)+1;
 	      int count = 0;
@@ -158,17 +161,17 @@ public class GameLogic {
 	      data.setScore(0, 1);
 	   }
 	   
-	   public void bombItem(int x, int y) {
-	      for(int i = 1; i <= 7; i++) {
-	         if(data.getMap(x, i) != 7 && data.getMap(x, i) != 8 && data.getMap(i, y) != 7 && data.getMap(i, y) != 8) {
-	            data.setScore(data.getMap(x, i), 1);   
-	            data.setMap(x, i, 0);
-	            data.setScore(data.getMap(i, y), 1);
-	            data.setMap(i, y, 0);
-	         }
-	      }
-	      
-	      data.setMap(x, y, 0);
-	      data.setScore(0, 1);
-	   }
+	/********** bombItem 수행하는 메소드 **********/
+	public void bombItem(int x, int y) {
+		for (int i = 1; i <= 7; i++) {
+			if (data.getMap(x, i) != 7 && data.getMap(x, i) != 8 && data.getMap(i, y) != 7 && data.getMap(i, y) != 8) {
+				data.setScore(data.getMap(x, i), 1);
+				data.setMap(x, i, 0);
+				data.setScore(data.getMap(i, y), 1);
+				data.setMap(i, y, 0);
+			}
+		}
+		data.setMap(x, y, 0);
+		data.setScore(0, 1);
+	}
 }

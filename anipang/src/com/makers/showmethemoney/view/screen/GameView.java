@@ -12,8 +12,9 @@ import com.makers.showmethemoney.view.layout.StartPanel;
 import test____.BackgroundMusic;
 
 public class GameView {
-	public GameView(/*JFrame frame*/) {
-//	public static void main(String[] args) {
+	
+	/********** 생성자 **********/
+	public GameView() {
 	
 		JFrame frame = new JFrame("reset");
 		frame.setLocation(500, 20);
@@ -23,10 +24,6 @@ public class GameView {
 		BackgroundMusicSound.stop();
 		BackgroundMusicSound.name.setText("C:\\Users\\User\\Desktop\\Anipang\\anipang\\고전게임스러운음악.wav");
 		BackgroundMusicSound.loop();
-		
-//		BackgroundMusic music = new BackgroundMusic();
-//		music.BackgroundMusicStop(music.file);
-//		music.BackgroundMusicReStart("C:\\Users\\User\\workspace\\test2\\고전게임스러운음악.wav");
 		
 		// Set Container
 		Container contentPane = frame.getContentPane(); 

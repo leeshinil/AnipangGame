@@ -27,11 +27,10 @@ public class GamePlayPanel extends JPanel implements MouseListener {
 	GameData data = GameData.getInstance(); // 데이터를 담을 객체
 	GameController gameController = null;
 	
-//	int type = 0; // thread
-//	int size = 1; // thread
 	boolean state = true; // thread
 	boolean end = false;
-	// 생성자
+	
+	/********** 생성자 **********/
 	public GamePlayPanel() {
 		gameController = new GameController(); // GameController 객체 생성
 
@@ -40,7 +39,7 @@ public class GamePlayPanel extends JPanel implements MouseListener {
 		setGamePanelImage(); // 게임 아이콘 출력 배경 이미지 초기화
 	}
 
-	// Map에 들어있는 각 value값을 콘솔창에 출력해주는 메소드
+	/********** Map에 들어있는 각 value값을 콘솔창에 출력해주는 메소드 **********/
 	public void printMap() {
 		for (int i = 1; i <= 7; i++) {
 			for (int j = 1; j <= 7; j++) {
@@ -50,37 +49,35 @@ public class GamePlayPanel extends JPanel implements MouseListener {
 		}
 	}
 	
-	// 배경 이미지 배열에 이미지 소스를 가져와 초기화 해주는 메소드
+	/********** 배경 이미지 배열에 이미지 소스를 가져와 초기화 해주는 메소드 **********/
 	public void setGamePanelImage() {
 		gamePanelImage = toolkit.getImage("gamePanelBackground.png");
 	}
 	
-		// 배경 이미지 배열에 이미지 소스를 가져와 초기화 해주는 메소드
+	/********** 배경 이미지 배열에 이미지 소스를 가져와 초기화 해주는 메소드 **********/
 	public void setGameBackgroundImage() {
 		gameBackgroundImage = toolkit.getImage("gameBackground.png");
 	}
 
-	// 아이콘 이미지 배열에 이미지 소스를 가져와 초기화 해주는 메소드
+	/********** 아이콘 이미지 배열에 이미지 소스를 가져와 초기화 해주는 메소드 **********/
 	public void setIcon() {
 		for (int index = 0; index <= 8; index++)
 			icons[index] = toolkit.getImage("money__" + (index) + ".png");
 	}
 	
-	// 게임 패널 배경 이미지를 그려주는 메소드
+	/********** 게임 패널 배경 이미지를 그려주는 메소드 **********/
 	public void drawGamePanelImage(Graphics g) {
 		g.setColor(Color.LIGHT_GRAY);
 		g.fillRect(0, 0, 1200, 950);
-//		g.drawImage(gamePanelImage, 0, 0, 1200, 950, this);
 	}
 
-	// 게임 아이콘 출력 배경 이미지를 그려주는 메소드
+	/********** 게임 아이콘 출력 배경 이미지를 그려주는 메소드 **********/
 	public void drawGameBackgroundImage(Graphics g) {
 		g.setColor(Color.black);
 		g.fillRect(190, 200, 605, 605);
-//		g.drawImage(gameBackgroundImage, 190, 200, 605, 605, this);
 	}
 
-	// 게임판 오른쪽 스코어 보드를 그려주는 메소드
+	/********** 게임판 오른쪽 스코어 보드를 그려주는 메소드 **********/
 	public void drawScore(Graphics g) {
 		g.clearRect(815, 200, 200, 605);
 		g.setColor(Color.blue);
@@ -105,7 +102,7 @@ public class GamePlayPanel extends JPanel implements MouseListener {
 		g.drawString(" x  " + score[0], 920, 240 + 259);
 	}
 
-	// 게임판 위쪽 시간보드를 그려주는 메소드
+	/********** 게임판 위쪽 시간보드를 그려주는 메소드 **********/
 	public void drawTime(Graphics g) {
 		if(state){
 			g.setColor(Color.RED);
@@ -118,7 +115,7 @@ public class GamePlayPanel extends JPanel implements MouseListener {
 		g.clearRect(995-(600-data.getTime())*13/10, 110, (600-data.getTime())*13/10, 50);
 	}
 	
-	// 게임판에 아이콘을 그려주는 메소드 190, 200
+	/********** 게임판에 아이콘을 그려주는 메소드 190, 200 **********/
 	public void drawIcon(Graphics g, int i, int j) { // 각 좌표별로 아이콘 이미지를 그려주는 메소드
 		g.drawImage(icons[data.getMap(i, j)], (j - 1) * 80 + 215, (i - 1) * 80 + 225, 70, 70, this);
 	}
@@ -131,12 +128,13 @@ public class GamePlayPanel extends JPanel implements MouseListener {
 //		g.drawImage(icons[data.getMap(start_x, start_y)], ((start_y - 1) * 80 + 25 + size), (start_x - 1) * 80 + 25, 70, 70, this);
 //	}
 	
+	/********** 버튼 이미지 그려주는 메소드 **********/
 	public void drawButton(Graphics g) {
 		g.setColor(Color.darkGray);
 		g.fillRect(495, 830, 300, 100);
 	}
 	
-	// 아이콘들과 배경 이미지를 그려주는 메소드
+	/********** 아이콘들과 배경 이미지를 그려주는 메소드 **********/
 	public void paint(Graphics g) {
 		if (state) { // 처음 시작 시
 			drawGamePanelImage(g);
@@ -173,6 +171,7 @@ public class GamePlayPanel extends JPanel implements MouseListener {
 		repaint();  // 다시 그려주는 메소드
 	}
 
+	/********** 시간 스레드 **********/
 	 public class TimeThread extends Thread {
 	      public void run() {
 	         while (data.getTime() > 0) {
@@ -191,10 +190,10 @@ public class GamePlayPanel extends JPanel implements MouseListener {
 	         
 	         // Finish
 	         finish();
-	 		
 	      }
 	   }
 	 
+	 /********** 스레드 종료 후 실행하는 메소드 **********/ /////////////////////////// 수정 및 추가 요함
 	 public void finish() {
 		 Buttons button = new Buttons(495, 830) {
         	 public void actionPerformed(ActionEvent e) {

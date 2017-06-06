@@ -13,6 +13,7 @@ public class MenuPanel extends JPanel {
 	Image startButton2;
 	Image startButton3;
 	
+	/********** 생성자 **********/
 	public MenuPanel() {
 		backgroundImage = toolkit.getImage("menuPanelBackground.png");
 		startButton1 = toolkit.getImage("modeButton1.png");
@@ -20,6 +21,7 @@ public class MenuPanel extends JPanel {
 		startButton3 = toolkit.getImage("modeButton3.png");
 	}
 	
+	/********** 그려주는 메소드 **********/
 	public void paint(Graphics g) {
 		g.clearRect(0, 0, 1200, 950);
 		g.drawImage(backgroundImage, 0, 0, 1200, 950, this);

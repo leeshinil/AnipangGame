@@ -12,12 +12,14 @@ public class StartPanel extends JPanel {
 	Image title = null;
 	Image startButton;
 	
+	/********** 생성자 **********/
 	public StartPanel() {
 		backgroundImage = toolkit.getImage("startBackgroundPanel.png");
 		title = toolkit.getImage("title2.png");
 		startButton = toolkit.getImage("startButton.png");
 	}
 
+	/********** 그려주는 메소드 **********/
 	public void paint(Graphics g) {
 		g.clearRect(0, 0, 1200, 950);
 		g.drawImage(backgroundImage, 0, 0, 1200, 950, this);
