@@ -84,8 +84,11 @@ public class GameLogic {
         }
         
         if (cur_state) {
-           if(bitCoinItem_state)
-              data.setMap(compare_x, compare_y, 7);
+           if(bitCoinItem_state) {
+        	   data.setMap(compare_x, compare_y, 7);
+        	   new GameSound()
+           }
+           
            else if(bombItem_state)
               data.setMap(compare_x, compare_y, 8);
            else {               

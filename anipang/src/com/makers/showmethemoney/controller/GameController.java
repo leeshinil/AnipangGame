@@ -39,6 +39,7 @@ public class GameController {
 			}
 			else
 				gameLogic.bombItem(compare_x[0], compare_y[0]);
+			gameSound.startSound(4); // 아이템 사용 소리
 		}
 
 		else { // icon이면 swap 가능여부 검사
@@ -52,14 +53,17 @@ public class GameController {
 				// bomb 없으면 원래 자리로 swap 후 return
 				if (!check_state1 && !check_state2) {
 					gameLogic.swap(compare_x, compare_y);
+					gameSound.startSound(2); // swap 불가 소리
 					return ;
 				}
 				else
 					gameSound.startSound(1); // 터지는 소리
 				}
 			
-			else // swap 불가능시 return
+			else {// swap 불가능시 return
+				gameSound.startSound(2); // swap 불가 소리
 				return ;
+			}
 		}
 		
 		boolean checkAll = false;
@@ -75,11 +79,11 @@ public class GameController {
 	}
 
 	/********** 모든 블록 bomb check method **********/
-	public boolean bombAll() { 
+	public boolean bombAll() {
 		boolean state = false;
 		for (int i = 1; i <= 4; i++) {
 			for (int j = 1; j <= 4 ; j++) {
-				if(i < 4 && j < 4) 
+				if(i < 4 && j < 4)
 					state = (state == true) ? true:  gameLogic.bomb((2 * i), (2 * j));
 				state = (state == true) ? true : gameLogic.bomb((2 * i) - 1, (2 * j) - 1);
 			}
