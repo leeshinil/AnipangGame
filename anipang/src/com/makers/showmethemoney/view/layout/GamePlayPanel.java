@@ -123,14 +123,6 @@ public class GamePlayPanel extends JPanel implements MouseListener {
 		g.drawImage(icons[data.getMap(i, j)], (j - 1) * 80 + 215, (i - 1) * 80 + 225, 70, 70, this);
 	}
 
-//	public void moveRightDraw(Graphics g, int start_x, int start_y) { // 오른쪽으로 이동할 때 아이콘을 그려주는 메소드 - 애니메이션, 미완성
-//		g.setColor(Color.BLACK);
-//		g.fillRect(((start_y - 1) * 80 + 25 + size - 10), (start_x - 1) * 80 + 25, 70, 70);
-//
-//		// move
-//		g.drawImage(icons[data.getMap(start_x, start_y)], ((start_y - 1) * 80 + 25 + size), (start_x - 1) * 80 + 25, 70, 70, this);
-//	}
-	
 	/********** 버튼 이미지 그려주는 메소드 **********/
 	public void drawButton(Graphics g) {
 		g.setColor(Color.darkGray);
@@ -169,7 +161,6 @@ public class GamePlayPanel extends JPanel implements MouseListener {
 		compare_x[1] = y;
 		compare_y[1] = x;
 
-//		new MoveThread().start();		// thread 효과 없애기 위해서 잠시 주석처리 하였음
 		gameController.doAction(compare_x, compare_y);
 		repaint();  // 다시 그려주는 메소드
 	}
@@ -187,9 +178,7 @@ public class GamePlayPanel extends JPanel implements MouseListener {
 	               // TODO Auto-generated catch block
 	               e.printStackTrace();
 	            }
-	         
 	         }
-	         
 	         // Finish
 	         finish();
 	      }
@@ -204,28 +193,4 @@ public class GamePlayPanel extends JPanel implements MouseListener {
  		};
  		this.add(button);
 	 }
-	
-//	public class MoveThread extends Thread {									//임시로 주석처리 하였음
-//
-//		public void run() {
-//			int count = 1;
-//			type = 1;
-//			while (count++ < 10) {
-//				try {
-//					Thread.sleep(50);
-//					moveRightDraw(getGraphics(), compare_x[0], compare_y[0]);
-//					size += 10;
-//
-//				} catch (InterruptedException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
-//			}
-//			swap();
-//			size = 1;
-//		}
-//
-//	}
-
-	
 }
