@@ -14,7 +14,7 @@ public class MenuPanel extends JPanel {
 	Image startButton3;
 	
 	public MenuPanel() {
-		backgroundImage = toolkit.getImage("startBackground2.png");
+		backgroundImage = toolkit.getImage("menuPanelBackground.png");
 		startButton1 = toolkit.getImage("modeButton1.png");
 		startButton2 = toolkit.getImage("modeButton2.png");
 		startButton3 = toolkit.getImage("modeButton3.png");

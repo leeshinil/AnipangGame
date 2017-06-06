@@ -1,21 +1,22 @@
 package com.makers.showmethemoney.controller;
 
-import com.makers.showmethemoney.model.game.BombSound;
+import com.makers.showmethemoney.model.game.GameSound;
 import com.makers.showmethemoney.model.game.GameData;
 import com.makers.showmethemoney.model.game.GameLogic;
 
 public class GameController {
 	GameData data = null;
 	GameLogic gameLogic = null;
-	BombSound bombsound = null;
+	GameSound gameSound = null;
 	
-	public GameController() { // 생성자
+	/********** 생성자 **********/
+	public GameController() {
 		data = GameData.getInstance(); // GameData를 담을 객체
 		gameLogic = new GameLogic(); // GameLogic 객체
-		bombsound = new BombSound();
+		gameSound = new GameSound(); // GameSound 객체
 	}
 
-	// Logic의 swapCompare메소드를 호출해주는 메소드
+	/********** Logic의 swapCompare메소드를 호출해주는 메소드 ************/
 	public boolean swapCompare(int compare_x[], int compare_y[]) { 
 		// swap 가능한지 여부를 boolean type으로 반환
 		boolean state = gameLogic.isSwapPossible(compare_x, compare_y);
@@ -24,15 +25,15 @@ public class GameController {
 		return state;
 	}
 	
-	// Logic의 bomb메소드를 호출해주는 메소드
-	public void doAction(int compare_x[], int compare_y[]/*, boolean item_state*/) {
+	/********** Logic의 bomb메소드를 호출해주는 메소드 ************/
+	public void doAction(int compare_x[], int compare_y[]) {
 		System.out.println("\n============start==================");
 		printMap();
 
 		boolean item_state = gameLogic.checkIsItem(compare_x[0], compare_y[0]); 
 		if(item_state) { // pressed가 item이면
 			
-			// true->bitcoinItem, false->bombItem
+			// true->bitcoinItem 수행, false->bombItem 수행
 			if(gameLogic.whatItem(compare_x[0], compare_y[0])) {
 				gameLogic.bitcoinItem(compare_x[0], compare_y[0]);
 			}
@@ -54,7 +55,7 @@ public class GameController {
 					return ;
 				}
 				else
-					bombsound.Start();
+					gameSound.startSound(1); // 터지는 소리
 				}
 			
 			else // swap 불가능시 return
@@ -65,20 +66,16 @@ public class GameController {
 		do {
 			checkAll = false;
 			gameLogic.downIcon(); // value가 0인 위치에 y-1값을 대입하는 메소드
-			// -> 제거 위치에 새로 downIcon 사용
-			// -> 메소드 호출 후 3개이상 중복시 다시 bomb 호출
-			// -> 반복문으로 계속 체크 
 			checkAll = bombAll(); //모든 블록 체크
+			
 			if(checkAll)
-				bombsound.Start();
-//			System.out.println(checkAll);
+				gameSound.startSound(1); //터진게 있으면 터지는 소리
 		} while (checkAll);
-		
-		System.out.println("\n============finish==================");
 		printMap();
 	}
 
-	public boolean bombAll() { // 모든 블록 bomb check
+	/********** 모든 블록 bomb check method **********/
+	public boolean bombAll() { 
 		boolean state = false;
 		for (int i = 1; i <= 4; i++) {
 			for (int j = 1; j <= 4 ; j++) {
@@ -87,12 +84,11 @@ public class GameController {
 				state = (state == true) ? true : gameLogic.bomb((2 * i) - 1, (2 * j) - 1);
 			}
 		}
-		System.out.println("\n============afterBoomCheck==================");
-		printMap();
 		return state;
 	}
 
-	public void printMap() { // map 출력
+	/********** map consol에 출력 **********/
+	public void printMap() {
 		for (int i = 1; i <= 7; i++) {
 			for (int j = 1; j <= 7; j++) {
 				System.out.print(data.getMap(i, j) + " ");

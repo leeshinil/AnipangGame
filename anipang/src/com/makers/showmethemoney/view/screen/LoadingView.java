@@ -7,34 +7,36 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JFrame;
 
-import com.makers.showmethemoney.view.layout.StartPanel;
 import com.makers.showmethemoney.view.layout.LoadingPanel;
 
 public class LoadingView {
 
-	public LoadingView(JFrame frame, int checkView, String s) {
+	public LoadingView(/*JFrame frame,*/ int checkView, String s) {
 		int _checkView = checkView;
 		
+		// Make Frame
+		JFrame frame = new JFrame("Show Me The Money");
+		frame.setLocation(500, 20);
+		frame.setPreferredSize(new Dimension(1215, 995));
+
 		// Set Container
 		Container contentPane = frame.getContentPane();
-		contentPane.setLayout(null);
 		
 		// make and set LoadingPanel
-		LoadingPanel loadingPanel = new LoadingPanel("startBackground2.png");
+		LoadingPanel loadingPanel = new LoadingPanel(s);
+		loadingPanel.setLayout(null);
 		loadingPanel.setBounds(0, 0, 1200, 950);
 
 		MouseListener listener = new MouseListener() {
 			public void mouseReleased(MouseEvent e) { }
 			public void mousePressed(MouseEvent e) {
-				loadingPanel.doDraw();
-				contentPane.remove(loadingPanel);
-				
 				switch(_checkView) {
-				case 0 : new MenuView(frame); break;
-//				case 1 : new GameView(frame); break; // mode 1
-//				case 2 : new GameView(frame); break; // mode 2
-//				case 3 : new GameView(frame); break; // mode 3
+				case 0 : new MenuView(/*frame*/); break;
+				case 1 : new GameView(/*frame*/); break; // mode 1
+				case 2 : new GameView(/*frame*/); break; // mode 2
+				case 3 : new GameView(/*frame*/); break; // mode 3
 				}
+				frame.dispose();
 			}
 			public void mouseExited(MouseEvent e) { }
 			public void mouseEntered(MouseEvent e) { }
@@ -44,5 +46,8 @@ public class LoadingView {
 		loadingPanel.addMouseListener(listener);
 		contentPane.add(loadingPanel);
 		
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.pack();
+		frame.setVisible(true);
 	}
 }

@@ -14,7 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-import com.makers.showmethemoney.model.game.BombSound;
+import com.makers.showmethemoney.model.game.GameSound;
 
 public class Buttons extends JButton implements ActionListener, MouseListener {
 	JLabel label = null;
@@ -24,7 +24,7 @@ public class Buttons extends JButton implements ActionListener, MouseListener {
 	
 	public Buttons(int x, int y) {
 		this.setBounds(x, y, 300, 100);
-//		this.setContentAreaFilled(false);
+		this.setContentAreaFilled(false);
 		
 		this.addActionListener(this);
 		this.addMouseListener(this);
@@ -33,15 +33,7 @@ public class Buttons extends JButton implements ActionListener, MouseListener {
 	public void actionPerformed(ActionEvent e) { }
 	public void mouseClicked(MouseEvent e) { }
 	public void mouseEntered(MouseEvent e) {
-		try {
-			file = new File(name.getText());
-			audioClip = Applet.newAudioClip(file.toURL());
-			audioClip.play();
-			System.out.println("Button Sound!");
-		} catch (MalformedURLException mue) {
-			JOptionPane.showMessageDialog(name, "Wrong file name.", "Error Message", JOptionPane.ERROR_MESSAGE);
-		}
-		new BombSound().Start();
+		new GameSound().startSound(0);
 	}
 	public void mouseExited(MouseEvent e) {	}
 	public void mousePressed(MouseEvent e) { }

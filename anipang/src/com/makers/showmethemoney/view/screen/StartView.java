@@ -28,9 +28,8 @@ public class StartView {
 		// START Button actionlistener inner Class Overriding
 		Buttons startButton = new Buttons(450, 700) {
 			public void actionPerformed(ActionEvent e) {
-				contentPane.remove(drawPanel);
-				contentPane.remove(this);
-				new LoadingView(frame, 0, "startBackground2.png");
+				new LoadingView(0, "menuPanelBackground.png");
+				frame.dispose();
 			}
 		};
 

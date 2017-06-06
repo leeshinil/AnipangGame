@@ -25,17 +25,6 @@ public class BackgroundMusicSound{
 		}
 	}
 
-	public static void play() {
-		try {
-			file = new File(name.getText());
-			audioClip = Applet.newAudioClip(file.toURL());
-			audioClip.play();
-			System.out.println("무한 재생!");
-		} catch (MalformedURLException mue) {
-			JOptionPane.showMessageDialog(name, "Wrong file name.", "Error Message", JOptionPane.ERROR_MESSAGE);
-		}
-	}
-
 	public static void stop() {
 		audioClip.stop();
 	}
