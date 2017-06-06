@@ -7,13 +7,14 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JFrame;
 
+import com.makers.showmethemoney.model.game.ThreadData;
 import com.makers.showmethemoney.view.layout.LoadingPanel;
 
 public class LoadingView {
-
-	public LoadingView(/*JFrame frame,*/ int checkView, String s) {
+	ThreadData threadData = null;
+	public LoadingView(int checkView, String s) {
 		int _checkView = checkView;
-		
+		threadData = ThreadData.getInstance();
 		// Make Frame
 		JFrame frame = new JFrame("Show Me The Money");
 		frame.setLocation(500, 20);
@@ -31,10 +32,18 @@ public class LoadingView {
 			public void mouseReleased(MouseEvent e) { }
 			public void mousePressed(MouseEvent e) {
 				switch(_checkView) {
-				case 0 : new MenuView(/*frame*/); break;
-				case 1 : new GameView(/*frame*/); break; // mode 1
-				case 2 : new GameView(/*frame*/); break; // mode 2
-				case 3 : new GameView(/*frame*/); break; // mode 3
+				case 0 : {
+					new MenuView();
+					threadData.setCount(260);
+					break;
+				}
+				case 1 : {
+					new GameView();
+					threadData.setCount(260);
+					break; // mode 1
+				}
+				case 2 : new GameView(); break; // mode 2
+				case 3 : new GameView(); break; // mode 3
 				}
 				frame.dispose();
 			}

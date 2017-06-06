@@ -7,11 +7,13 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 
+import com.makers.showmethemoney.model.game.ThreadData;
 import com.makers.showmethemoney.view.layout.Buttons;
 import com.makers.showmethemoney.view.layout.MenuPanel;
 
 public class MenuView {
 	
+	/********** 생성자 **********/
 	public MenuView() {
 
 		// Make Frame
@@ -35,8 +37,8 @@ public class MenuView {
 		// Button Action에 대한 inner Class Overriding
 		ActionListener action1 = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				contentPane.remove(layPanel);
 				new LoadingView(1, "gamePanelBackground.png");
+				frame.dispose();
 			}
 		};
 		ActionListener action2 = new ActionListener() {
