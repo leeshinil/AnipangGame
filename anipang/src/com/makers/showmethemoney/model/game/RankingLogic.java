@@ -9,11 +9,9 @@ import java.util.Comparator;
 import java.util.LinkedList;
 
 public class RankingLogic {
-	public static void main(String[] args) {
-		writeScoreToFile("신우창", 45);
-	}
-	// file read
-	public static LinkedList<GameRankingData> readScoreToFile() {
+	
+	/********** File Read 메소드 **********/
+	public LinkedList<GameRankingData> readScoreToFile() {
 		LinkedList<GameRankingData> list = new GameRankingData().getList(); 
 		BufferedReader br = null;
 		try {
@@ -34,8 +32,8 @@ public class RankingLogic {
 		return list;
 	}
 
-	// file write
-	public static void writeScoreToFile(String nickname, int total_score) {
+	/********** File Write 메소드 **********/
+	public void writeScoreToFile(String nickname, int total_score) {
 		LinkedList<GameRankingData> list = readScoreToFile();
 		list.add(new GameRankingData(nickname, total_score));
 		Collections.sort(list, new GameRankingDataCompare());
@@ -52,10 +50,9 @@ public class RankingLogic {
 	}
 }
 
-// sorting
+/********** sorting 클래스 **********/
 class GameRankingDataCompare implements Comparator<GameRankingData> {
 
-	@Override
 	public int compare(GameRankingData g1, GameRankingData g2) {
 		if (g1.getTotal_score() < g2.getTotal_score()) {
 			return 1;

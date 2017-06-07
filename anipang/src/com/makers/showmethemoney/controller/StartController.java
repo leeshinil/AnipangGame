@@ -7,8 +7,7 @@ public class StartController {
 	
 	/********** »ý¼ºÀÚ **********/
 	public void gameStart() {
-		// Start View!!
 		new StartView();
-		new BackgroundMusicSound().loop();
+		BackgroundMusicSound.loop();
 	}
 }

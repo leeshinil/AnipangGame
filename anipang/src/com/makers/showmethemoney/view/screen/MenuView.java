@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 
+import com.makers.showmethemoney.model.game.BackgroundMusicSound;
 import com.makers.showmethemoney.model.game.ThreadData;
 import com.makers.showmethemoney.view.layout.Buttons;
 import com.makers.showmethemoney.view.layout.MenuPanel;
@@ -49,6 +50,7 @@ public class MenuView {
 		};
 		ActionListener action3 = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				BackgroundMusicSound.stop();
 				frame.dispose();
 			}
 		};

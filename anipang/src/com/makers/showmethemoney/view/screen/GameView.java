@@ -6,10 +6,8 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 
 import com.makers.showmethemoney.model.game.BackgroundMusicSound;
+import com.makers.showmethemoney.model.game.GameData;
 import com.makers.showmethemoney.view.layout.GamePlayPanel;
-import com.makers.showmethemoney.view.layout.StartPanel;
-
-import test____.BackgroundMusic;
 
 public class GameView {
 	
@@ -30,11 +28,12 @@ public class GameView {
 		contentPane.setLayout(null);
 		
 		// make and set GamePlayPanel
-		GamePlayPanel playPanel = new GamePlayPanel();
+		GamePlayPanel playPanel = new GamePlayPanel(frame); /////////////////////////
 		playPanel.setBounds(0, 0, 1200, 950); // 위치 크기조절
 		playPanel.addMouseListener(playPanel); // imagePanel에 대한 add Listener
-		
 		contentPane.add(playPanel); // contentPanel에 add playPanel
+		
+		GameData data = new GameData();
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.pack();

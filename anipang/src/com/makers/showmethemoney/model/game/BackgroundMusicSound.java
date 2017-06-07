@@ -26,6 +26,7 @@ public class BackgroundMusicSound{
 		}
 	}
 
+	/********** À½¾Ç ÁßÁö **********/
 	public static void stop() {
 		audioClip.stop();
 	}

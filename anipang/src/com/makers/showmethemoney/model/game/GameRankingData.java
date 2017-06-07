@@ -4,33 +4,45 @@ import java.util.LinkedList;
 
 public class GameRankingData {
 	
+	//GameRanking을 저장할 LinkedList
 	private LinkedList<GameRankingData> list = new LinkedList<GameRankingData>();
-	
-	public LinkedList<GameRankingData> getList() {
-		return list;
-	}
+	GameData data = null;
 	private int total_score;
 	private String nickname;
-	public int getTotal_score() {
-		return total_score;
+
+	/********** 생성자 **********/
+	public GameRankingData() {
+		data = GameData.getInstance();
 	}
-	public void setTotal_score(int total_score) {
-		this.total_score = total_score;
-	}
-	public String getNickname() {
-		return nickname;
-	}
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
-	}
+	
+	/********** 생성자 **********/
 	public GameRankingData(String nickname, int total_score) {
 		this.nickname = nickname;
 		this.total_score = total_score;
 	}
-	public GameRankingData() {
-		
+	
+	/********** LinkedList값 반환 메소드 **********/
+	public LinkedList<GameRankingData> getList() {
+		return list;
 	}
 	
-	//getter setter (접근자, 제어자) -> Alt + Shift + S
+	/********** totalScore 반환 메소드 **********/
+	public int getTotal_score() {
+		return total_score;
+	}
+
+	/********** totalScore 대입 메소드 **********/
+	public void setTotal_score() {
+		total_score = data.getTotal();
+	}
+
+	/********** nickName 대입 메소드 **********/
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
 	
+	/********** nickName 반환 메소드 **********/
+	public String getNickname() {
+		return nickname;
+	}
 }
