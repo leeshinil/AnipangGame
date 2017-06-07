@@ -12,6 +12,8 @@ import com.makers.showmethemoney.view.layout.LoadingPanel;
 
 public class LoadingView {
 	ThreadData threadData = null;
+	
+	/********** »ý¼ºÀÚ **********/
 	public LoadingView(int checkView, String s) {
 		int _checkView = checkView;
 		threadData = ThreadData.getInstance();

@@ -27,7 +27,6 @@ public class GameController {
 
 	/********** Logic의 bomb메소드를 호출해주는 메소드 ************/
 	public void doAction(int compare_x[], int compare_y[]) {
-		System.out.println("\n============start==================");
 
 		boolean item_state = gameLogic.checkIsItem(compare_x[0], compare_y[0]);
 		if (item_state) { // pressed가 item이면
