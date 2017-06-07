@@ -16,8 +16,9 @@ public class ThreadData {
 	public synchronized int getCount() { return count; }
 	public void setCount() { this.count += 1; }
 	public void setCount(int count) { this.count = count; }
-	
 	/**********************************************/
+	
+	/********** init ¸Þ¼Òµå **********/
 	public void setInit() {
 		this.count = 0;
 		this.loading_state = true;

@@ -86,11 +86,12 @@ public class GameLogic {
         if (cur_state) {
            if(bitCoinItem_state) {
         	   data.setMap(compare_x, compare_y, 7);
-        	   new GameSound()
+        	   new GameSound().startSound(3); // 아이템 생길때
            }
-           
-           else if(bombItem_state)
-              data.setMap(compare_x, compare_y, 8);
+           else if(bombItem_state) {
+        	   data.setMap(compare_x, compare_y, 8);
+        	   new GameSound().startSound(3); // 아이템 생길때
+           }
            else {               
               data.setMap(compare_x, compare_y, 0);
            }
@@ -110,27 +111,20 @@ public class GameLogic {
 	/********** 아이콘 빈칸에 채우기 **********/
 	public void downIcon() {
 		Random random = new Random();
-		
-		for (int i = 7; i > 1; i--) {
-			for (int j = 1; j <= 7; j++) {
-				if (data.getMap(i, j) == 0) {
-					for (int b = i - 1; b >= 1; b--) {
+
+		for (int i = 7; i > 1; i--)
+			for (int j = 1; j <= 7; j++)
+				if (data.getMap(i, j) == 0)
+					for (int b = i - 1; b >= 1; b--)
 						if (data.getMap(b, j) != 0) {
 							data.setMap(i, j, data.getMap(b, j));
 							data.setMap(b, j, 0);
 							break;
 						}
-					}
-				}
-			}
-		}
-		for (int x = 1; x <= 7; x++) {
-			for (int y = 1; y <= 7; y++) {
-				if (data.getMap(x, y) == 0) {
+		for (int x = 1; x <= 7; x++)
+			for (int y = 1; y <= 7; y++)
+				if (data.getMap(x, y) == 0)
 					data.setMap(x, y, random.nextInt(6) + 1);
-				}
-			}
-		}
 	}
 	
 	/********** item인지 체크하는 메소드 **********/
