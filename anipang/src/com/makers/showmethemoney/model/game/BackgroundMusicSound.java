@@ -20,7 +20,6 @@ public class BackgroundMusicSound{
 			file = new File(name.getText());
 			audioClip = Applet.newAudioClip(file.toURL());
 			audioClip.loop();
-			System.out.println("무한 재생!");
 		} catch (MalformedURLException mue) {
 			JOptionPane.showMessageDialog(name, "Wrong file name.", "Error Message", JOptionPane.ERROR_MESSAGE);
 		}

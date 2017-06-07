@@ -172,7 +172,6 @@ public class GamePlayPanel extends JPanel implements MouseListener {
 		public void run() {
 			while (data.getTime() > 0) {
 				try {
-					System.out.println(data.getTime());
 					drawTime(getGraphics());
 					Thread.sleep(100);
 					data.setTime(1);
