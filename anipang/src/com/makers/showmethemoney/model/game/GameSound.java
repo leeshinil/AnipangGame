@@ -29,7 +29,6 @@ public class GameSound {
 		try {
 			AudioClip audioClip = Applet.newAudioClip(file[i].toURL());
 			audioClip.play();
-			System.out.println("Game Sound!");
 		} catch (MalformedURLException mue) {
 			JOptionPane.showMessageDialog(name[i], "Wrong file name.", "Error Message", JOptionPane.ERROR_MESSAGE);
 		}

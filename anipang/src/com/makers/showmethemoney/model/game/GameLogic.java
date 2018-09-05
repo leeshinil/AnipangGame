@@ -69,7 +69,6 @@ public class GameLogic {
                  data.setMap(x, y, 0);
                 
               }
-              System.out.println("total : " + total_count);
             
               if(total_count >= 2) // increase scores
             	  data.setScore(data.getMap(compare_x, compare_y), total_count+1);

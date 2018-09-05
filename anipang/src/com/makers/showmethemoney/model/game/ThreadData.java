@@ -13,9 +13,18 @@ public class ThreadData {
 	
 	/********* loadingpanel thread data ***********/
 	int count = 0;
-	public synchronized int getCount() { return count; }
-	public void setCount() { this.count += 1; }
-	public void setCount(int count) { this.count = count; }
+
+	public synchronized int getCount() {
+		return count;
+	}
+
+	public void setCount() {
+		this.count += 1;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
 	/**********************************************/
 	
 	/********** init ¸Þ¼Òµå **********/

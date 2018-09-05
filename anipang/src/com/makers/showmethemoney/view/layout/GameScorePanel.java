@@ -21,9 +21,7 @@ public class GameScorePanel extends JPanel {
 	Image scoreImage = null;
 	Image button = null;
 	
-//	private Font f = null;
-//	JLabel = null;
-	
+	/********** »ý¼ºÀÚ **********/
 	public GameScorePanel(JTextField text) {
 		gamePanelImage = toolkit.getImage("gamePanelBackground.png");
 		scoreBackgroundImage = toolkit.getImage("input.png");
@@ -31,8 +29,6 @@ public class GameScorePanel extends JPanel {
 		button = toolkit.getImage("modeButton2.png");
 		
 		data = GameData.getInstance();
-		
-//		f = new Font("¸¼Àº°íµñ", Font.BOLD, 30);
 		
 		this.text = text;
 		this.add(text);

@@ -1,6 +1,7 @@
 package com.makers.showmethemoney.view.layout;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -106,7 +107,8 @@ public class GamePlayPanel extends JPanel implements MouseListener {
 		g.setColor(Color.GREEN);
 		g.fillRect(975 - (600 - data.getTime()) * 13 / 10, 110, 20, 50);
 		g.setColor(Color.black);
-		g.drawString(Integer.toString(data.getTime() / 10), 975 - (600 - data.getTime()) * 13 / 10, 140);
+		g.setFont(new Font("맑은 고딕", Font.BOLD, 20));
+		g.drawString(Integer.toString(data.getTime() / 10), 990 - (600 - data.getTime()) * 13 / 10, 140);
 	}
 
 	/********** 게임판에 아이콘을 그려주는 메소드 190, 200 **********/
@@ -172,7 +174,6 @@ public class GamePlayPanel extends JPanel implements MouseListener {
 		public void run() {
 			while (data.getTime() > 0) {
 				try {
-					System.out.println(data.getTime());
 					drawTime(getGraphics());
 					Thread.sleep(100);
 					data.setTime(1);

@@ -28,7 +28,7 @@ public class GameView {
 		contentPane.setLayout(null);
 		
 		// make and set GamePlayPanel
-		GamePlayPanel playPanel = new GamePlayPanel(frame); /////////////////////////
+		GamePlayPanel playPanel = new GamePlayPanel(frame);
 		playPanel.setBounds(0, 0, 1200, 950); // 위치 크기조절
 		playPanel.addMouseListener(playPanel); // imagePanel에 대한 add Listener
 		contentPane.add(playPanel); // contentPanel에 add playPanel
